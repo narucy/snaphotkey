@@ -1,8 +1,8 @@
 #Requires AutoHotkey v2.0
 
-; at own your risk -- I do recommend stop script while accessing shop
+; at own your risk -- I do recommend to stop script while accessing shop
 
-; ^F5:: Reload
+F5:: Reload
 
 SNAP_EXE := A_ProgramFiles . " (x86)\Steam\steamapps\common\MARVEL SNAP\SNAP.exe"
 UNTAPPED_EXE := EnvGet("LocalAppData") . "\Programs\untapped-companion\Untapped.gg Companion.exe"
@@ -31,16 +31,20 @@ XButton2:: {
     SNAP_Click(0.8, 0.25)
     SNAP_Click(0.5, 0.5)
 }
-F2:: {
-    WinMove (1920 - 1758) / 2, 10, 1758, 1016, "A"
+F1:: {
+    ; WinMove (1920 - 772) / 2, 5, 772, 1045, "A"
+    WinMove (1920 - 788) / 2, 05, 788, 1080, "A"
 }
+F2:: {
+    WinMove (1920 - 1755) / 2, 10, 1755, 1024, "A"
+}
+!F4:: {
+    ProcessClose("SNAP.exe")
+}
+
 #HotIf
 
 TraySetIcon("snaphotkey.ico")
-
-if ProcessExist("SNAP.exe") == 0 {
-    Run SNAP_EXE
-}
 
 if ProcessExist("Untapped.gg Companion.exe") == 0 {
     Run UNTAPPED_EXE
@@ -49,6 +53,11 @@ if ProcessExist("Untapped.gg Companion.exe") == 0 {
     }
 }
 
+if ProcessExist("SNAP.exe") == 0 {
+    Run SNAP_EXE
+}
+
 ProcessWaitClose("SNAP.exe")
 ProcessClose("Untapped.gg Companion.exe")
+
 ExitApp
