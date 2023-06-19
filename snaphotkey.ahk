@@ -25,15 +25,14 @@ SNAP_Click(x, y) {
 #HotIf WinActive("ahk_exe SNAP.exe")
 MButton:: SNAP_Click(0.85, 0.9)
 ; XButton1:: SNAP_Click(0.5, 0.9)
-XButton1:: Esc
+XButton1:: SNAP_Click(0.5, 0.9)
 XButton2:: {
     SNAP_Click(0.9, 0.1)
     SNAP_Click(0.8, 0.25)
     SNAP_Click(0.5, 0.5)
 }
 F1:: {
-    ; WinMove (1920 - 772) / 2, 5, 772, 1045, "A"
-    WinMove (1920 - 788) / 2, 05, 788, 1080, "A"
+    WinMove (1920 - 788) / 2, 0, 788, 1079, "A"
 }
 F2:: {
     WinMove (1920 - 1755) / 2, 10, 1755, 1024, "A"
@@ -55,6 +54,10 @@ if ProcessExist("Untapped.gg Companion.exe") == 0 {
 
 if ProcessExist("SNAP.exe") == 0 {
     Run SNAP_EXE
+    if WinWait("ahk_exe SNAP.exe", , 5) {
+        WinMove (1920 - 788) / 2, 0, 788, 1079, "A"
+    }
+
 }
 
 ProcessWaitClose("SNAP.exe")
