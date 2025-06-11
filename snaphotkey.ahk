@@ -106,8 +106,9 @@ if ProcessExist("SNAP.exe") == 0 {
     Run(SNAP_EXEC)
 }
 
-WinWait("Steam Games List", , 10)
-WinClose("Steam Games List")
+if WinWait("Steam Games List", , 10) {
+    WinClose("Steam Games List")
+}
 
 ProcessWait("SNAP.exe")
 ProcessWaitClose("SNAP.exe")
