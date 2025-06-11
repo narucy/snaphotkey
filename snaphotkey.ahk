@@ -106,9 +106,8 @@ if ProcessExist("SNAP.exe") == 0 {
     Run(SNAP_EXEC)
 }
 
-if WinWait("Steam Games List", , 10) {
-    WinClose("Steam Games List")
-}
+WinWait("ahk_exe steamwebhelper.exe", , 10)
+WinClose("ahk_exe steamwebhelper.exe")
 
 ProcessWait("SNAP.exe")
 ProcessWaitClose("SNAP.exe")
