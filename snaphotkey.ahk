@@ -97,7 +97,7 @@ TraySetIcon("snaphotkey.ico")
 
 if ProcessExist("Untapped.gg Companion.exe") == 0 {
     Run UNTAPPED_EXE
-    if WinWait("Untapped.gg", , 30) {
+    if WinWait("Untapped.gg", , 10) {
         WinClose("Untapped.gg")
     }
 }
@@ -105,6 +105,9 @@ if ProcessExist("Untapped.gg Companion.exe") == 0 {
 if ProcessExist("SNAP.exe") == 0 {
     Run(SNAP_EXEC)
 }
+
+WinWait("Steam Games List", , 10)
+WinClose("Steam Games List")
 
 ProcessWait("SNAP.exe")
 ProcessWaitClose("SNAP.exe")
